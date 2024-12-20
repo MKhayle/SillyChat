@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<Version>1.7.1.0</Version>
 		<Title>SillyChat</Title>
-		<Authors>kalilistic</Authors>
+		<Authors>kalilistic, maintained by khayle</Authors>
 		<TargetFramework>net8.0-windows8.0</TargetFramework>
 		<Platforms>x64</Platforms>
 		<LangVersion>latest</LangVersion>
