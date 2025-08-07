@@ -1,8 +1,8 @@
 using System.Linq;
 
 using CheapLoc;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
-using ImGuiNET;
 
 namespace SillyChat
 {
