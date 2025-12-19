@@ -14,17 +14,8 @@
         "resolved": "1.2.25",
         "contentHash": "xCXiw7BCxHJ8pF6wPepRUddlh2dlQlbr81gXA72hdk4FLHkKXas7EH/n+fk5UCA/YfMqG1Z6XaPiUjDbUNBUzg=="
       },
-      "XivCommon": {
-        "type": "Transitive",
-        "resolved": "9.0.0",
-        "contentHash": "avaBp3FmSCi/PiQhntCeBDYOHejdyTWmFtz4pRBVQQ8vHkmRx+YTk1la9dkYBMlXxRXKckEdH1iI1Fu61JlE7w=="
-      },
       "sillychat": {
-        "type": "Project",
-        "dependencies": {
-          "DalamudPackager": "[13.0.0, )",
-          "XivCommon": "[9.0.0, )"
-        }
+        "type": "Project"
       }
     }
   }
