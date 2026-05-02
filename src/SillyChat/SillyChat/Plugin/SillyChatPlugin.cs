@@ -6,15 +6,14 @@ using CheapLoc;
 using Dalamud.Configuration;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Game.Chat;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Command;
-using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using Dalamud.Utility.Signatures;
 using SillyChat.Localization;
 using SillyChat.SillyChat.Service;
 
@@ -180,28 +179,29 @@ namespace SillyChat
             this.SaveConfig();
         }
 
-        private void ChatMessage(Dalamud.Game.Text.XivChatType type, int timestamp, ref SeString sender, ref SeString message, ref bool isHandled)
+        private void ChatMessage(IChatMessage message)
         {
             if (!this.Configuration.Enabled)
             {
                 return;
             }
 
-            if (isHandled)
+            if (message.IsHandled)
             {
                 return;
             }
 
-            var chatType = (uint)type & ~(~0 << 7);
+            var chatType = (uint)message.LogKind & ~(~0 << 7);
             if (!Enum.IsDefined(typeof(SupportedChatType), chatType))
             {
                 return;
             }
 
-            this.Translate(message);
+            this.Translate(message.Message);
         }
 
         //private void OnTalk(ref SeString name, ref SeString text, ref XivCommon.Functions.TalkStyle style)
+        
         private void OnTalk(AddonEvent type, AddonArgs args)
         {
             if (!this.Configuration.Enabled)
@@ -211,7 +211,7 @@ namespace SillyChat
 
             if (args is AddonRefreshArgs setupArgs)
             {
-                if (setupArgs.AtkValueSpan.ToString() is string) this.Translate(setupArgs.AtkValueSpan.ToString());
+                if (setupArgs.AtkValues.ToString() is string) this.Translate(setupArgs.AtkValues.ToString());
             }
         }
 
@@ -225,7 +225,7 @@ namespace SillyChat
 
             if (args is AddonRefreshArgs setupArgs)
             {
-                if (setupArgs.AtkValueSpan.ToString() is string) this.Translate(setupArgs.AtkValueSpan.ToString());
+                if (setupArgs.AtkValues.ToString() is string) this.Translate(setupArgs.AtkValues.ToString());
             }
 
         }
