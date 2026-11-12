@@ -65,6 +65,7 @@ namespace SillyChat
                 new TranslationMode(8, "Owo", new OwoTranslator(plugin)),
                 new TranslationMode(9, "Moogle", new MoogleTranslator(plugin)),
                 new TranslationMode(10, "Chocobo", new ChocoboTranslator(plugin)),
+                new TranslationMode(11, "Al Bhed", new AlBhedTranslator(plugin)),
             };
         }
 
